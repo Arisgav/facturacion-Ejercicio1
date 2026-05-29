@@ -16,4 +16,8 @@ public class Cliente {
     @Required
     String nombre;
 
+    @Embedded // Así para referenciar a una clase incrustable
+    Direccion direccion; // Una referencia Java convencional
+
+
 }
