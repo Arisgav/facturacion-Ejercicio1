@@ -6,6 +6,9 @@ import lombok.*;
 
 @Entity
 @Getter @Setter
+@View(name="Simple", // Esta vista solo se usará cuando se especifique ?Simple?
+        members="numero, nombre" // Muestra únicamente numero y nombre en la misma línea
+)
 public class Cliente {
 
     @Id
@@ -19,5 +22,8 @@ public class Cliente {
     @Embedded // Así para referenciar a una clase incrustable
     Direccion direccion; // Una referencia Java convencional
 
+    @ManyToOne(fetch=FetchType.LAZY, optional=false)
+    @ReferenceView("Simple") // La vista llamada 'Simple' se usará para visualizar esta referencia
+    Cliente cliente;
 
 }
